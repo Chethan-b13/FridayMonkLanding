@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "predeploy": "npm run build",
+    "clean": "node -e \"const fs=require('fs'); fs.existsSync('out') && fs.rmSync('out',{ recursive:true, force:true }); console.log('out cleaned')\"",
+    "predeploy": "npm run clean && next build && next export",
     "deploy": "gh-pages -d out"
   },
   "dependencies": {
